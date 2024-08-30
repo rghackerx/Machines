@@ -1,0 +1,15 @@
+# Ensure that PHP files are processed by the PHP interpreter
+AddHandler application/x-httpd-php .php
+
+# Forcing the server to treat .php files as PHP scripts
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+# Prevent direct access to .htaccess file itself
+<Files ".htaccess">
+    Require all denied
+</Files>
+
+# Optional: Prevent directory browsing
+Options -Indexes
